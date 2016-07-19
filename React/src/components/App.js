@@ -4,16 +4,37 @@ import { observer } from 'mobx-react';
 @observer
 export default class App extends React.Component {
     render(){
+
+        const loading = this.props.appState.loading ? <span>Loading</span> : null;
+
+        var getUsers = () => {
+            if(!this.props.appState.numberOfUsers){
+                return null;
+            }
+
+            return (
+                <ul>
+                    {this.props.appState.users.map((user,index) => (
+                        <li key={index}>
+                            <img src={user.picture.thumbnail} width="50"/>
+                            <span>{user.name.first} {user.name.last}</span>
+                        </li>
+                    ))}
+                </ul>
+            );
+        };
+
         return (
             <div>
-                <h1>Counter App</h1>
-                <button onClick={() => {this.props.counter.increment()}}>
-                    {this.props.counter.value}
+                <h1>MobX Example</h1>
+                {loading}
+                <button onClick={() => this.props.users.list()}>
+                    Get Users
                 </button>
-                <button onClick={() => { this.props.counter.value = 0; }}>
-                    Reset
-                </button>
-                <div>{this.props.counter.difference}</div>
+                {getUsers()}
+                <div>
+                    Total Users: {this.props.appState.numberOfUsers}
+                </div>
             </div>
         );
     }
