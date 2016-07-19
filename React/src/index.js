@@ -2,8 +2,11 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import App from './components/App';
+import Counter from './model/Counter';
+
+const counter = new Counter();
 
 render(
-    <h1>Counter</h1>,
+    <App counter={counter}></App>,
     document.getElementById('root')
 );
