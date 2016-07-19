@@ -1,0 +1,9 @@
+{
+  "name": "react-mobx-example",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "dependencies": {
+    "mobx": "2.3.7"
+  }
+}
