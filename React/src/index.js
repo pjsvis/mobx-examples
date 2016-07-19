@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Counter from './components/Counter';
+import App from './components/App';
 
 render(
     <h1>Counter</h1>,
