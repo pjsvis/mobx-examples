@@ -10,6 +10,10 @@ export default class App extends React.Component {
                 <button onClick={() => {this.props.counter.increment()}}>
                     {this.props.counter.value}
                 </button>
+                <button onClick={() => { this.props.counter.value = 0; }}>
+                    Reset
+                </button>
+                <div>{this.props.counter.difference}</div>
             </div>
         );
     }
