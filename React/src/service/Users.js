@@ -16,7 +16,7 @@ export default class Users {
     list(){
         this.appState.loading = true;
         _list().then((users) => {
-           this.appState.users = users;
+            this.appState.users = users;
             this.appState.loading = false;
         }).catch(() => {
             this.appState.loading = false;
