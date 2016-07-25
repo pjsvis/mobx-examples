@@ -1,9 +1,22 @@
-<html>
+<html data-ng-app="mobx-example">
 <head>
     <title>MobX React Example</title>
 </head>
-<body>
-    <div id="root"></div>
-    <script src="/static/bundle.js"></script>
+<body data-ng-controller="RootController">
+    <h1>MobX Example</h1>
+    <button data-ng-click="getUsers()">Get Users</button>
+    <div>
+        <loading></loading>
+    </div>
+    <ul>
+        <li data-ng-repeat="user in users">
+            <img data-ng-src="{{user.picture.thumbnail}}" width="50"/>
+            <span>{{user.name.first}} {{user.name.last}}</span>
+        </li>
+    </ul>
+    <div>
+        Total Users: {{numberOfUsers}}
+    </div>
+<script src="/static/bundle.js"></script>
 </body>
 </html>
