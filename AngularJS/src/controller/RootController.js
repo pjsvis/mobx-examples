@@ -1,15 +1,17 @@
 import { autorun } from 'mobx';
 import _ from 'lodash';
 
-export default ($scope,AppState,Users) => {
+export default function(AppState,Users) {
 
     //Two way binding to the state...bad?
     //$scope.state = AppState
 
-    autorun(() => {
+    const selector = () => {
         const scopeData = _.pick(AppState,'users','numberOfUsers');
-        _.extend($scope,scopeData);
-    });
+        _.extend(this,scopeData);
+    };
+
+    autorun(selector);
 
     /*
      Look mama: no $watch
@@ -18,5 +20,8 @@ export default ($scope,AppState,Users) => {
         console.log("Total number of users: " + AppState.numberOfUsers);
     });
 
-    $scope.getUsers = Users;
+    this.getUsers = Users;
+
+    //Init
+    selector();
 };

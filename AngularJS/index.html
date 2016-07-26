@@ -2,20 +2,20 @@
 <head>
     <title>MobX React Example</title>
 </head>
-<body data-ng-controller="RootController">
+<body data-ng-controller="RootController as root">
     <h1>MobX Example</h1>
-    <button data-ng-click="getUsers()">Get Users</button>
+    <button data-ng-click="root.getUsers()">Get Users</button>
     <div>
         <loading></loading>
     </div>
     <ul>
-        <li data-ng-repeat="user in users">
+        <li data-ng-repeat="user in root.users">
             <img data-ng-src="{{user.picture.thumbnail}}" width="50"/>
             <span>{{user.name.first}} {{user.name.last}}</span>
         </li>
     </ul>
     <div>
-        Total Users: {{numberOfUsers}}
+        Total Users: {{root.numberOfUsers}}
     </div>
 <script src="/static/bundle.js"></script>
 </body>
