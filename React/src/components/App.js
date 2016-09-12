@@ -1,15 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { autorun } from 'mobx';
 
 @observer
 export default class App extends React.Component {
-
-    componentDidMount(){
-        autorun(() => {
-           this.props.users.list(this.props.appState.query);
-        });
-    }
 
     render(){
 

@@ -7,10 +7,14 @@ import App from './components/App';
 import appState from './model/AppState';
 import Users from './service/Users';
 
-const users = new Users(appState);
+const users = Users(appState);
 
 autorun(() => {
     console.log("Total number of users: " + appState.numberOfUsers);
+});
+
+autorun(() => {
+    users.list(appState.query);
 });
 
 render(

@@ -1,4 +1,4 @@
-var _list = (query) => {
+const _list = (query) => {
     return fetch('https://randomuser.me/api/?results=20&seed=' + query).then((res) => {
         return res.json();
     }).then((data) => {
@@ -6,24 +6,24 @@ var _list = (query) => {
     });
 };
 
-export default class Users {
-    appState;
+export default (appState) => {
 
-    constructor(appState){
-        this.appState = appState;
-    }
-
-    list(query){
-        this.appState.loading = true;
+    const list = (query) => {
+        appState.loading = true;
         _list(query).then((users) => {
-            this.appState.users = users;
-            this.appState.loading = false;
+            appState.users = users;
+            appState.loading = false;
         }).catch(() => {
-            this.appState.loading = false;
+            appState.loading = false;
         });
-    }
+    };
 
-    delete(index){
-        this.appState.users.splice(index,1);
+    const remove = (index) => {
+        appState.users.splice(index,1);
+    };
+
+    return {
+        list,
+        remove
     }
 };
