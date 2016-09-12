@@ -4,13 +4,14 @@ import { autorun } from 'mobx';
 
 import App from './components/App';
 
-import AppState from './model/AppState';
+import appState from './model/AppState';
 import Users from './service/Users';
 
-const appState = new AppState();
 const users = new Users(appState);
 
-autorun(() => console.log("Total number of users: " + appState.numberOfUsers));
+autorun(() => {
+    console.log("Total number of users: " + appState.numberOfUsers);
+});
 
 render(
     <App

@@ -1,5 +1,5 @@
-var _list = () => {
-    return fetch('https://randomuser.me/api/?results=20').then((res) => {
+var _list = (query) => {
+    return fetch('https://randomuser.me/api/?results=20&seed=' + query).then((res) => {
         return res.json();
     }).then((data) => {
         return data.results;
@@ -13,9 +13,9 @@ export default class Users {
         this.appState = appState;
     }
 
-    list(){
+    list(query){
         this.appState.loading = true;
-        _list().then((users) => {
+        _list(query).then((users) => {
             this.appState.users = users;
             this.appState.loading = false;
         }).catch(() => {

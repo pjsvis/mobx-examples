@@ -1,8 +1,16 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import { autorun } from 'mobx';
 
 @observer
 export default class App extends React.Component {
+
+    componentDidMount(){
+        autorun(() => {
+           this.props.users.list(this.props.appState.query);
+        });
+    }
+
     render(){
 
         const loading = this.props.appState.loading ? <span>Loading</span> : null;
@@ -29,9 +37,7 @@ export default class App extends React.Component {
             <div>
                 <h1>MobX Example</h1>
                 {loading}
-                <button onClick={() => this.props.users.list()}>
-                    Get Users
-                </button>
+                <input type="text" onChange={(e) => this.props.appState.query = e.target.value}/>
                 {getUsers()}
                 <div>
                     Total Users: {this.props.appState.numberOfUsers}

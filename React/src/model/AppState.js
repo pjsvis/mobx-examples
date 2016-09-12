@@ -1,10 +1,12 @@
-import { observable, computed } from 'mobx';
+import { observable, computed , extendObservable} from 'mobx';
 
-export default class AppState {
-    @observable loading = false;
-    @observable users = [];
-
-    @computed get numberOfUsers() {
+const AppState = {
+    query:"",
+    loading: false,
+    users:[],
+    get numberOfUsers() {
         return this.users.length;
     }
 };
+
+export default observable(AppState);
