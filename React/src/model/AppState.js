@@ -1,4 +1,4 @@
-import { observable, computed , extendObservable} from 'mobx';
+import { observable } from 'mobx';
 
 const AppState = {
     query:"",
