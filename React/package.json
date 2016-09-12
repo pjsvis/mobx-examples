@@ -9,8 +9,8 @@
     "test": " karma start"
   },
   "dependencies": {
-    "mobx": "2.3.7",
-    "mobx-react": "3.5.1",
+    "mobx": "2.5.1",
+    "mobx-react": "3.5.5",
     "react": "15.2.1",
     "react-dom": "15.2.1"
   },

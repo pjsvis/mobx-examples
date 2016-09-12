@@ -18,6 +18,7 @@ export default class App extends React.Component {
                         <li key={index}>
                             <img src={user.picture.thumbnail} width="50"/>
                             <span>{user.name.first} {user.name.last}</span>
+                            <button onClick={() => this.props.users.delete(index)}>Delete</button>
                         </li>
                     ))}
                 </ul>

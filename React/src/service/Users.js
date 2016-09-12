@@ -22,4 +22,8 @@ export default class Users {
             this.appState.loading = false;
         });
     }
+
+    delete(index){
+        this.appState.users.splice(index,1);
+    }
 };
