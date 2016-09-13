@@ -6,20 +6,20 @@ export default class App extends React.Component {
 
     render(){
 
-        const loading = this.props.appState.loading ? <span>Loading</span> : null;
+        const loading = this.props.state.loading ? <span>Loading</span> : null;
 
         var getUsers = () => {
-            if(!this.props.appState.numberOfUsers){
+            if(!this.props.state.numberOfUsers){
                 return null;
             }
 
             return (
                 <ul>
-                    {this.props.appState.users.map((user,index) => (
+                    {this.props.state.users.map((user,index) => (
                         <li key={index}>
                             <img src={user.picture.thumbnail} width="50"/>
                             <span>{user.name.first} {user.name.last}</span>
-                            <button onClick={() => this.props.users.delete(index)}>Delete</button>
+                            <button onClick={() => this.props.users.remove(index)}>Delete</button>
                         </li>
                     ))}
                 </ul>
@@ -30,10 +30,10 @@ export default class App extends React.Component {
             <div>
                 <h1>MobX Example</h1>
                 {loading}
-                <input type="text" onChange={(e) => this.props.appState.query = e.target.value}/>
+                <input type="text" onChange={(e) => this.props.state.query = e.target.value}/>
                 {getUsers()}
                 <div>
-                    Total Users: {this.props.appState.numberOfUsers}
+                    Total Users: {this.props.state.numberOfUsers}
                 </div>
             </div>
         );

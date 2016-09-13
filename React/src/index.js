@@ -14,12 +14,17 @@ autorun(() => {
 });
 
 autorun(() => {
+    console.log("males: " + appState.males.length);
+    console.log("females: " + appState.females.length);
+});
+
+autorun(() => {
     users.list(appState.query);
 });
 
 render(
     <App
-        appState={appState}
+        state={appState}
         users={users}></App>,
     document.getElementById('root')
 );

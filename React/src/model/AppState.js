@@ -6,6 +6,12 @@ const AppState = {
     users:[],
     get numberOfUsers() {
         return this.users.length;
+    },
+    get males() {
+        return this.users.filter(user => user.gender === 'male');
+    },
+    get females() {
+        return this.users.filter(user => user.gender !== 'male');
     }
 };
 
