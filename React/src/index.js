@@ -4,27 +4,27 @@ import { autorun } from 'mobx';
 
 import App from './components/App';
 
-import appState from './model/AppState';
+import { appState, appStateInstance , extendedAppState as state} from './model/AppState';
 import Users from './service/Users';
 
-const users = Users(appState);
+const users = Users(state);
 
 autorun(() => {
-    console.log("Total number of users: " + appState.numberOfUsers);
+    console.log("Total number of users: " + state.numberOfUsers);
 });
 
 autorun(() => {
-    console.log("males: " + appState.males.length);
-    console.log("females: " + appState.females.length);
+    console.log("males: " + state.males.length);
+    console.log("females: " + state.females.length);
 });
 
 autorun(() => {
-    users.list(appState.query);
+    users.list(state.query);
 });
 
 render(
     <App
-        state={appState}
+        state={state}
         users={users}></App>,
     document.getElementById('root')
 );
